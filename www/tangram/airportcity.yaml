@@ -1,0 +1,39 @@
+cameras:
+    camera1:
+        type: isometric
+
+
+lights:
+    light1:
+        type: directional
+        direction: [0, 1, -.5]
+        diffuse: .3
+        ambient: 1
+
+sources:
+    osm:
+        type: TopoJSON
+        url:  https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key= vector-tiles-AbJeGIE
+
+layers:
+    roads:
+        data: { source: osm }
+
+        highway:
+            filter: { kind: highway, highway: [ motorway_link, secondary_link ] }
+            draw:
+                lines:
+                    order: 5
+                    color: '#ccc'
+                    width: 10
+                    outline:
+                        color: grey
+                        width: 1.5
+        minor_road:
+            filter: { kind: minor_road, aeroway: [runway, taxiway] }
+            draw:
+                lines:
+                    order: 3
+                    color: '#000000'
+                    width: 10
+

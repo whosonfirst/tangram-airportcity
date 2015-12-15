@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Airport City</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-beta.2/leaflet.css" />
+    <link rel="stylesheet" href="css/airportcity.css" />
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
+    <script src="https://mapzen.com/tangram/0.4/tangram.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-beta.2/leaflet.js"></script>
+    <script src="javascript/leaflet.hash.min.js"></script>
+
+    <script src="javascript/airportcity.js"></script>
+
+    <script>
+
+        var args = {
+		'minZoom': 3, 'max_zoom': 18
+	};
+	
+        var map = L.map('map', args);
+	L.hash(map);
+
+        var layer = Tangram.leafletLayer({
+            scene: 'tangram/airportcity.yaml',
+            attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
+        });
+
+        layer.addTo(map);
+
+        map.setView([40.649908,-73.788815], 11);
+	map.on('zoom', airport_onzoom);
+
+	airport_onzoom();
+    </script>
+
+  </body>
+</html>
