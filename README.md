@@ -1,8 +1,10 @@
 # tangram-airportcity
 
+It's [Airport City](http://airportcity.spum.org/). In [Tangram](https://mapzen.com/projects/tangram/).
+
 ![](images/tangram-airportcity.png)
 
-It's [Airport City](http://airportcity.spum.org/). In [Tangram](https://mapzen.com/projects/tangram/).
+![](images/tangram-airportcity-noodles.png)
 
 ## Caveats
 
