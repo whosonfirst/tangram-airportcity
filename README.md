@@ -1,5 +1,7 @@
 # tangram-airportcity
 
+![](images/tangram-airportcity.png)
+
 It's [Airport City](http://airportcity.spum.org/). In [Tangram](https://mapzen.com/projects/tangram/).
 
 ## Caveats
