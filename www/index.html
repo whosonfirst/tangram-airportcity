@@ -13,33 +13,31 @@
     <script src="javascript/leaflet.min.js"></script>
     <script src="javascript/leaflet.hash.min.js"></script>
  
-    <script src="javascript/airportcity.js"></script>
+    <script src="javascript/mapzen.whosonfirst.log.js"></script>
+    <script src="javascript/mapzen.whosonfirst.net.js"></script>
+    <script src="javascript/mapzen.whosonfirst.airportcity.js"></script>
 
   </head>
 
   <body>
     <div id="map"></div>
 
-    <script>
+    <div id="footer">
 
-        var args = {
-		'minZoom': 3, 'max_zoom': 18
-	};
-	
-        var map = L.map('map', args);
-	L.hash(map);
+      <div id="colophon"></div>
 
-        var layer = Tangram.leafletLayer({
-            scene: 'tangram/airportcity.yaml',
-            attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
-        });
+      <form method="GET" id="search" onsubmit="javascript:;return false;">
+	<span id="search_input">
+	    <input id="search_query" type="text" name="q" size="5" />
+	    <input type="submit" value="search" />
+	</span>
 
-        layer.addTo(map);
+      </form>
 
-        map.setView([40.6856, -74.1654], 13);
-	map.on('zoom', airport_onzoom);
+</div>
 
-	airport_onzoom();
+    <script type="text/javascript">
+      mapzen.whosonfirst.airportcity.init();
     </script>
 
   </body>
