@@ -15,11 +15,11 @@ body {
     font-size:11px;
     margin:0px;
     padding:15px;
-    background-color:#fff;
+    padding-bottom:30px;
+    background-color:#fbfbfb;
     position: absolute; right: 0px; bottom: 0px;
     border-top: 1px dotted #ccc;
     border-left: 1px dotted #ccc;
-    color:#999;
     opacity: .9;
     min-width:30%;
 }
@@ -27,4 +27,13 @@ body {
 #footer a { 
     color:#666;
     font-weight:700;
+}
+
+input[type=text] {
+		 padding: .18em;
+}
+
+button {
+       border: solid thin;
+       color:#333;
 }

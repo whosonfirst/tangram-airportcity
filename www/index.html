@@ -5,7 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Airport City</title>
-    <link rel="stylesheet" href="css/leaflet.css" />
+
+    <link rel="stylesheet" href="css/leaflet.min.css" />
     <link rel="stylesheet" href="css/airportcity.css" />
 
     <script src="https://mapzen.com/tangram/0.4/tangram.min.js"></script>
@@ -28,8 +29,8 @@
 
       <form method="GET" id="search" onsubmit="javascript:mapzen.whosonfirst.airportcity.search();return false;">
 	<span id="search_input">
-	    <input id="search_query" type="text" name="q" size="5" />
-	    <input type="submit" value="search" />
+	    <input id="search_query" type="text" name="q" placeholder="search for an airport"/>
+	    <button type="submit">search</button>
 	</span>
 
       </form>
