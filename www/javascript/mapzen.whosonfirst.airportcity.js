@@ -18,7 +18,9 @@ mapzen.whosonfirst.airportcity = (function(){
 		var end_b = parseInt(end_hex.substring(4, 6), 16);
 		
 		var map;
-		
+
+		var endpoint = 'http://localhost:3333';
+
 		var self = {
 			
 			'init': function(){
@@ -102,10 +104,8 @@ mapzen.whosonfirst.airportcity = (function(){
 					alert("Silly! You forgot to say what you want to search for");
 				}
 
-				// PLEASE TO READ ME FROM A CONFIG FILE...
-
 				query = mapzen.whosonfirst.net.encode_query({ 'q': q });
-				url = "http://localhost:8080?" + query;
+				url = self.search_endpoint() + "?" + query;
 
 				var on_success = function(rsp){
 
@@ -137,6 +137,15 @@ mapzen.whosonfirst.airportcity = (function(){
 				}
 
 				return false;
+			},
+
+			'search_endpoint' : function(e) {
+
+				if (e){
+					endpoint = e;
+				}
+
+				return endpoint;
 			}
 
 		};

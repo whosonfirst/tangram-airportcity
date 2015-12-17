@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Airport City</title>
 
-    <link rel="stylesheet" href="css/leaflet.min.css" />
+    <link rel="stylesheet" href="css/leaflet.css" />
     <link rel="stylesheet" href="css/airportcity.css" />
 
     <script src="https://mapzen.com/tangram/0.4/tangram.min.js"></script>
@@ -38,8 +38,10 @@
 </div>
 
     <script src="javascript/mapzen.whosonfirst.airportcity.js"></script>
+    <script src="javascript/mapzen.whosonfirst.config.js"></script>
 
     <script type="text/javascript">
+      mapzen.whosonfirst.config.init();
       mapzen.whosonfirst.airportcity.init();
     </script>
 

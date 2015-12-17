@@ -1,0 +1,16 @@
+var mapzen = mapzen || {};
+mapzen.whosonfirst = mapzen.whosonfirst || {};
+
+mapzen.whosonfirst.config = (function(){
+
+	var self = {
+
+		'init': function(){
+
+			// mapzen.whosonfirst.airportcity.search_endpoint('http://localhost:3333');
+		}
+	};
+
+	return self;
+
+})();
