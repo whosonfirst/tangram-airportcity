@@ -91,8 +91,55 @@ mapzen.whosonfirst.airportcity = (function(){
 				
 				var m = document.getElementById('map');
 				m.style.backgroundColor = '#' + bgcolor;
+			},
+
+			'search': function() {
+
+				var q = document.getElementById("search_query");
+				q = q.value;
+
+				if (q == ""){
+					alert("Silly! You forgot to say what you want to search for");
+				}
+
+				// PLEASE TO READ ME FROM A CONFIG FILE...
+
+				query = mapzen.whosonfirst.net.encode_query({ 'q': q });
+				url = "http://localhost:8080?" + query;
+
+				var on_success = function(rsp){
+
+					var count = rsp.length;
+
+					// PLEASE TO BE ERROR REPORTING
+
+					if (! count){
+						return;
+					}
+
+					var first = rsp[0];
+					var lat = first['Latitude'];
+					var lon = first['Longitude'];
+
+					map.setView([lat, lon], 13);					
+				};
+
+				// PLEASE TO BE ERROR REPORTING
+
+				var on_fail = function(rsp){
+					console.log(rsp);
+				};
+
+				try {
+					mapzen.whosonfirst.net.fetch(url, on_success, on_fail);
+				} catch (e) {
+					console.log(e);
+				}
+
+				return false;
 			}
-		}
+
+		};
 		
 		return self;
 		
