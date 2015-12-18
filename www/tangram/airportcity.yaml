@@ -39,7 +39,8 @@ layers:
                 text_source: name
                 font:
                     family: sans-serif
-                    weight: 700
+                    transform: uppercase
+                    weight: 900
                     size: 24px
                     fill: '#333'
                     # stroke: { color: '#fff', width: 6 }
