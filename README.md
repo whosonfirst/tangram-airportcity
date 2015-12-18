@@ -12,7 +12,7 @@ This is a work in progress. It is not finished yet. Also, in no particular order
 
 * Line widths are fixed (and not adjusted by zoom yet)
 * The vector tiles don't have road/airport data < zoom 11
-* Airport labels are not rendered or displayed yet 
+* Airport labels are not displayed yet while we wait for airport codes to become available in the vector files (you can enable full airport names by tweaking the [scenefile](www/tangram/airportcity.yaml]).
 * Multiple search results are not handled gracefully. Specifically only the first result is shown.
 * There is no meaningful feedback when an airport search does not yield any results
 

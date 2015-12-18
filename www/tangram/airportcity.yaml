@@ -3,6 +3,13 @@ sources:
         type: TopoJSON
         url:  https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-AbJeGIE
 
+styles:
+    text-inlay:
+        base: text
+        blend: inlay
+        # inlay will cause this style to obey the order parameter and
+        # place the labels in 3d space instead of on top of everything
+
 layers:
     roads:
         data: { source: osm }
@@ -26,11 +33,13 @@ layers:
         data: { source: osm }
         filter: { kind: aerodrome }
         draw:
-            text:
+            text-inlay:
+                visible: false
+                order: 0
                 text_source: name
                 font:
-                    family: Helvetica
-                    weight: 500
-                    size: 64px
-                    fill: '#ff00ff'
-                    stroke: { color: '#00ff00', width: 4 }
+                    family: sans-serif
+                    weight: 700
+                    size: 24px
+                    fill: '#333'
+                    # stroke: { color: '#fff', width: 6 }
