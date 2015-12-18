@@ -22,3 +22,16 @@ layers:
                     color: '#000000'
                     width: 20
 
+        # Y U NO RENDER?
+
+        pois:
+	    filter: { kind: aerodrome }
+	    draw:
+	        text:
+	            text_source: name
+		    font:
+		        family: Helvetica
+		        weight: 500
+		        size: 64px
+		        fill: '#ff00ff'
+		        stroke: { color: '#00ff00', width: 4 }
