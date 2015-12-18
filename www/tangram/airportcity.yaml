@@ -25,13 +25,13 @@ layers:
         # Y U NO RENDER?
 
         pois:
-	    filter: { kind: aerodrome }
-	    draw:
-	        text:
-	            text_source: name
-		    font:
-		        family: Helvetica
-		        weight: 500
-		        size: 64px
-		        fill: '#ff00ff'
-		        stroke: { color: '#00ff00', width: 4 }
+            filter: { kind: aerodrome }
+            draw:
+                text:
+                    text_source: name
+                    font:
+                        family: Helvetica
+                        weight: 500
+                        size: 64px
+                        fill: '#ff00ff'
+                        stroke: { color: '#00ff00', width: 4 }
