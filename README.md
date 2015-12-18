@@ -14,6 +14,7 @@ This is a work in progress. It is not finished yet. Also, in no particular order
 * The vector tiles don't have road/airport data < zoom 11
 * Airport labels are not rendered or displayed yet 
 * Multiple search results are not handled gracefully. Specifically only the first result is shown.
+* There is no meaningful feedback when an airport search does not yield any results
 
 ## Usage
 
