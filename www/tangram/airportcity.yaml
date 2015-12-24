@@ -34,13 +34,12 @@ layers:
         filter: { kind: aerodrome }
         draw:
             text-inlay:
-                visible: false
                 order: 0
-                text_source: name
+                text_source: iata
                 font:
                     family: sans-serif
                     transform: uppercase
                     weight: 900
-                    size: 24px
-                    fill: '#333'
+                    size: 100px
+                    fill: rgba(70,70,70,.1) 
                     # stroke: { color: '#fff', width: 6 }
