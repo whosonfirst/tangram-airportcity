@@ -14,20 +14,53 @@ layers:
     roads:
         data: { source: osm }
 
-        highway:
+        highway1:
             filter: { kind: highway, highway: [ motorway_link, secondary_link ] }
             draw:
                 lines:
                     order: 5
                     color: '#ccc'
-                    width: 10
-        minor_road:
+                    width: 15
+
+        highway2:
+            filter: { kind: highway, highway: [ motorway_link, secondary_link ], $zoom: 12 }
+            draw:
+                lines:
+                    order: 5
+                    color: '#ccc'
+                    width: 30
+
+        highway3:
+            filter: { kind: highway, highway: [ motorway_link, secondary_link ], $zoom: 11 }
+            draw:
+                lines:
+                    order: 5
+                    color: '#ccc'
+                    width: 60
+
+        airports1:
             filter: { kind: minor_road, aeroway: [runway, taxiway] }
             draw:
                 lines:
                     order: 3
                     color: '#000000'
                     width: 20
+
+        airports2:
+            filter: { kind: minor_road, aeroway: [runway, taxiway], $zoom: 12 }
+            draw:
+                lines:
+                    order: 3
+                    color: '#00000f'
+                    width: 30
+
+        airports3:
+            filter: { kind: minor_road, aeroway: [runway, taxiway], $zoom: { max: 12 } }
+            draw:
+                lines:
+                    order: 3
+                    color: '#000000'
+                    width: 40
 
     pois:
         data: { source: osm }
