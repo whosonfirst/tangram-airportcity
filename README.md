@@ -15,7 +15,6 @@ This is a work in progress. It is not finished yet. Also, in no particular order
 * Airport labels are not displayed yet while we wait for airport codes to become available in the vector files (you can enable full airport names by tweaking the [scenefile](www/tangram/airportcity.yaml)).
 * Multiple search results are not handled gracefully. Specifically only the first result is shown.
 * There is no meaningful feedback when an airport search does not yield any results
-* The swooshy background-colour transitions in CSS are currently broken
 
 ## Usage
 

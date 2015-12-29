@@ -4,7 +4,7 @@ mapzen.whosonfirst = mapzen.whosonfirst || {};
 mapzen.whosonfirst.airportcity = (function(){
 
 		var zoom_min = 3;
-		var zoom_max = 18;
+		var zoom_max = 16;
 		
 		var start_hex = 'ffffff';
 		var end_hex = '395167';
@@ -26,7 +26,7 @@ mapzen.whosonfirst.airportcity = (function(){
 			'init': function(){
 
 				var args = {
-					'minZoom': 3, 'max_zoom': 18
+					'minZoom': zoom_min, 'maxZoom': zoom_max
 				};
 		
 				// please replace me with mapzen.whosonfirst.tangram
@@ -37,13 +37,16 @@ mapzen.whosonfirst.airportcity = (function(){
 				
 				var layer = Tangram.leafletLayer({
 						scene: 'tangram/airportcity.yaml',
+						numWorkers: 2,
+						unloadInvisibleTiles: false,
+						updateWhenIdle: false,
 						attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
 					});
 				
 				layer.addTo(map);
 				
 				map.setView([40.6856, -74.1654], 13);
-				map.on('zoom', mapzen.whosonfirst.airportcity.onzoom);
+				map.on('zoomend', self.onzoom);
 				
 				self.onzoom();
 			},
