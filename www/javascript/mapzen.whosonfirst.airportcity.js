@@ -7,8 +7,9 @@ mapzen.whosonfirst.airportcity = (function(){
 		var zoom_max = 16;
 		
 		var start_hex = 'ffffff';
-		var end_hex = '395167';
-		
+		// var end_hex = '395167';	// the original airport city
+		var end_hex = '72a0c1';		// air superiority blue
+
 		var start_r = parseInt(start_hex.substring(0, 2), 16);
 		var start_g = parseInt(start_hex.substring(2, 4), 16);
 		var start_b = parseInt(start_hex.substring(4, 6), 16);
