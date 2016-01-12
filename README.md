@@ -2,7 +2,11 @@
 
 It's [Airport City](http://airportcity.spum.org/). In [Tangram](https://mapzen.com/projects/tangram/).
 
-![](images/tangram-airportcity.png)
+![](images/tangram-airportcity-ewr.png)
+
+![](images/tangram-airportcity-dfw.png)
+
+![](images/tangram-airportcity-pek.png)
 
 ![](images/tangram-airportcity-noodles.png)
 
