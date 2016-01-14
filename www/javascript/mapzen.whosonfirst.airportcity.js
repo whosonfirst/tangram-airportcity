@@ -53,6 +53,9 @@ mapzen.whosonfirst.airportcity = (function(){
 				map.on('zoomend', self.onzoom);
 				
 				self.onzoom();
+
+				var c = document.getElementById("feedback-controls");
+				c.onclick = self.hide_feedback;
 			},
 			
 			'onzoom': function(){
@@ -215,16 +218,23 @@ mapzen.whosonfirst.airportcity = (function(){
 					clearTimeout(fb);
 				}
 
-				var f = document.getElementById("feedback");
-				f.innerHTML = mapzen.whosonfirst.php.htmlspecialchars(msg);
+				var m = document.getElementById("feedback-msg");
+				m.innerHTML = mapzen.whosonfirst.php.htmlspecialchars(msg);
 
+				var f = document.getElementById("feedback");
 				f.style = "display:block;";
 
-				fb = setTimeout(function(){
-						var f = document.getElementById("feedback");
-						f.innerHTML = "";
-						f.style = "display:none;";
-					}, 5000);
+				fb = setTimeout(function(){					
+						mapzen.whosonfirst.airportcity.hide_feedback();
+				}, 5000);
+			},
+
+			'hide_feedback': function() {
+				var m = document.getElementById("feedback-msg");
+				m.innerHTML = "";
+						
+				var f = document.getElementById("feedback");
+				f.style = "display:none;";
 			},
 		};
 		
