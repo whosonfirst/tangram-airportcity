@@ -19,6 +19,7 @@ mapzen.whosonfirst.airportcity = (function(){
 		var end_b = parseInt(end_hex.substring(4, 6), 16);
 		
 		var map;
+		var fb;
 
 		var endpoint = 'http://localhost:3333';
 
@@ -115,12 +116,13 @@ mapzen.whosonfirst.airportcity = (function(){
 
 				var on_success = function(rsp){
 					
-					console.log(rsp);
 					var count = rsp.length;
 
-					// PLEASE TO BE ERROR REPORTING
-
 					if (count == 0){
+
+						var msg = "sorry, there don't appear to be any results for '" + q + "'";
+						mapzen.whosonfirst.airportcity.feedback(msg);
+
 						return;
 					}
 
@@ -163,14 +165,19 @@ mapzen.whosonfirst.airportcity = (function(){
 						var bounds = [[swlat, swlon], [nelat, nelon]];
 						map.fitBounds(bounds);
 
+						var msg = "mutiple results for '" + q + "' so zooming out to fit them all";
+						mapzen.whosonfirst.airportcity.feedback(msg);
+
 						// console.log(bounds);
 					}
 				};
 
-				// PLEASE TO BE ERROR REPORTING
-
 				var on_fail = function(rsp){
-					console.log(rsp);
+
+					var msg = "oh no... there was a problem doing that search";
+					mapzen.whosonfirst.airportcity.feedback(msg);
+
+					// console.log(rsp);
 				};
 
 				try {
@@ -200,6 +207,24 @@ mapzen.whosonfirst.airportcity = (function(){
 
 				var a = document.getElementsByClassName("leaflet-control-attribution");
 				a[0].style = style;
+			},
+
+			'feedback': function(msg) {
+
+				if (fb){
+					clearTimeout(fb);
+				}
+
+				var f = document.getElementById("feedback");
+				f.innerHTML = mapzen.whosonfirst.php.htmlspecialchars(msg);
+
+				f.style = "display:block;";
+
+				fb = setTimeout(function(){
+						var f = document.getElementById("feedback");
+						f.innerHTML = "";
+						f.style = "display:none;";
+					}, 5000);
 			},
 		};
 		

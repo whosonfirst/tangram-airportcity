@@ -10,6 +10,20 @@ body {
       position: absolute;
 }
 
+#feedback {
+	  width: 50%;
+	  max-width: 50%;
+	  max-height: 2em;
+	  padding:.75em;
+	  position: absolute; top: 10px; left: 25%;
+	  z-index: 100;
+	  background-color:#fbfbfb;
+	  border: none;
+	  font-family: sans-serif;
+	  color: #333;
+	  display:none;
+}
+
 #footer { 
     text-align:right;
     font-size:11px;
