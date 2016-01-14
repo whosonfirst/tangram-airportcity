@@ -29,6 +29,13 @@ body {
     font-weight:700;
 }
 
+.leaflet-control-attribution {
+			     background-color:#fbfbfb !important;
+			     border: none;
+			     margin-bottom: .5em !important;
+			     margin-right: 15px !important;
+}
+
 input[type=text] {
 		 padding: .18em;
 }
@@ -36,4 +43,7 @@ input[type=text] {
 button {
        border: solid thin;
        color:#333;
+       padding:.23em;
+       padding-left:.5em;
+       padding-right:.5em;
 }

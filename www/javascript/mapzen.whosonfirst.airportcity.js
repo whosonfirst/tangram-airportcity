@@ -46,6 +46,8 @@ mapzen.whosonfirst.airportcity = (function(){
 				
 				layer.addTo(map);
 				
+				// TO DO: iplookup hoohah
+
 				map.setView([40.6856, -74.1654], 13);
 				map.on('zoomend', self.onzoom);
 				
@@ -112,20 +114,57 @@ mapzen.whosonfirst.airportcity = (function(){
 				url = self.search_endpoint() + "?" + query;
 
 				var on_success = function(rsp){
-
+					
+					console.log(rsp);
 					var count = rsp.length;
 
 					// PLEASE TO BE ERROR REPORTING
 
-					if (! count){
+					if (count == 0){
 						return;
 					}
 
-					var first = rsp[0];
-					var lat = first['Latitude'];
-					var lon = first['Longitude'];
+					else if (count == 1){
+						var first = rsp[0];
+						var lat = first['Latitude'];
+						var lon = first['Longitude'];
+						map.setView([lat, lon], 13);
+					}
 
-					map.setView([lat, lon], 13);					
+					else {
+
+						var swlat = undefined;
+						var swlon = undefined;
+						var nelat = undefined;
+						var nelon = undefined;
+
+						for (var i=0; i < count; i++){
+
+							var lat = rsp[i]['Latitude'];
+							var lon = rsp[i]['Longitude'];
+
+							if ((! swlat) || (lat < swlat)){
+								swlat = lat;
+							}
+
+							if ((! swlon) || (lon < swlon)){
+								swlon = lon;
+							}
+
+							if ((! nelat) || (lat > nelat)){
+								nelat = lat;
+							}
+
+							if ((! nelon) || (lon > nelon)){
+								nelon = lon;
+							}
+						}
+
+						var bounds = [[swlat, swlon], [nelat, nelon]];
+						map.fitBounds(bounds);
+
+						// console.log(bounds);
+					}
 				};
 
 				// PLEASE TO BE ERROR REPORTING
@@ -150,8 +189,18 @@ mapzen.whosonfirst.airportcity = (function(){
 				}
 
 				return endpoint;
-			}
+			},
 
+			'toggle_footer' : function(show) {
+
+				var style = (show) ? "display:inline;" : "display:none;";
+
+				var f = document.getElementById("footer");
+				f.style = style;
+
+				var a = document.getElementsByClassName("leaflet-control-attribution");
+				a[0].style = style;
+			},
 		};
 		
 		return self;
