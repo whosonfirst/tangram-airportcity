@@ -19,6 +19,7 @@ mapzen.whosonfirst.airportcity = (function(){
 		var end_b = parseInt(end_hex.substring(4, 6), 16);
 		
 		var map;
+		var layer;
 		var fb;
 
 		var endpoint = 'http://localhost:3333';
@@ -37,7 +38,7 @@ mapzen.whosonfirst.airportcity = (function(){
 				map = L.map('map', args);
 				L.hash(map);
 				
-				var layer = Tangram.leafletLayer({
+				layer = Tangram.leafletLayer({
 						scene: 'tangram/airportcity.yaml',
 						numWorkers: 2,
 						unloadInvisibleTiles: false,
@@ -236,6 +237,20 @@ mapzen.whosonfirst.airportcity = (function(){
 				var f = document.getElementById("feedback");
 				f.style = "display:none;";
 			},
+
+			'scene': function(){
+				return layer.scene;
+			},
+
+			'screenshot': function(){
+
+				var on_screenshot = function(result) {
+					window.open(result.url);
+				}
+
+				var scene = self.scene();
+				scene.screenshot().then(on_screenshot);
+			}
 		};
 		
 		return self;
