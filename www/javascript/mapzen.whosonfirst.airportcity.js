@@ -242,10 +242,12 @@ mapzen.whosonfirst.airportcity = (function(){
 				return layer.scene;
 			},
 
-			'screenshot': function(){
+			'screenshot': function(on_screenshot){
 
-				var on_screenshot = function(result) {
-					window.open(result.url);
+				if (! on_screenshot){
+					on_screenshot = function(result) {
+						window.open(result.url);
+					};
 				}
 
 				var scene = self.scene();
