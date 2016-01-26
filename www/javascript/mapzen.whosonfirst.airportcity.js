@@ -263,6 +263,9 @@ mapzen.whosonfirst.airportcity = (function(){
 				scene.updateConfig();
 
 				scene.screenshot().then(on_screenshot);
+
+				scene.config.scene.background = {};
+				scene.updateConfig();
 			}
 		};
 		
