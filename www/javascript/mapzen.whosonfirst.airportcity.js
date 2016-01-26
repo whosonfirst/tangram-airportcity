@@ -101,7 +101,11 @@ mapzen.whosonfirst.airportcity = (function(){
 				var b = interpolate(start_b, end_b, step, 100);
 				
 				bgcolor = hex(r) + hex(g) + hex(b);
-				
+
+				// See notes below (in 'screenshot') about where/what/who
+				// should be updating the background colour
+				// (20160125/thisisaaronland)
+
 				var m = document.getElementById('map');
 				m.style.backgroundColor = '#' + bgcolor;
 			},
@@ -245,7 +249,8 @@ mapzen.whosonfirst.airportcity = (function(){
 			'screenshot': function(on_screenshot){
 
 				if (! on_screenshot){
-					on_screenshot = function(result) {
+
+					on_screenshot = function(result) {						
 						window.open(result.url);
 					};
 				}
@@ -262,10 +267,21 @@ mapzen.whosonfirst.airportcity = (function(){
 				scene.config.scene.background.color = c;
 				scene.updateConfig();
 
-				scene.screenshot().then(on_screenshot);
+				scene.screenshot().then(function(rsp){
 
-				scene.config.scene.background = {};
-				scene.updateConfig();
+					on_screenshot(rsp);
+
+					// Remove Tangram background so that the code
+					// to set the background colour on the #map div
+					// displays. This suggests that perhaps we should
+					// be setting 'scene.config.scene.background.color'
+					// instead but I don't know what the penalty for
+					// invoking 'updateConfig' all the time would be
+					// (20160125/thisisaaronland)
+
+					scene.config.scene.background = {};
+					scene.updateConfig();
+				});
 			}
 		};
 		
