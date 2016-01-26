@@ -268,7 +268,7 @@ mapzen.whosonfirst.airportcity = (function(){
 
 			'screenshot_as_file': function(){
 
-				var fname = 'tangram-airport-' + (+new Date()) + '.png';
+				var fname = 'tangram-airportcity-' + (+new Date()) + '.png';
 
 				var callback = function(sh){					
 					saveAs(sh.blob, fname);
