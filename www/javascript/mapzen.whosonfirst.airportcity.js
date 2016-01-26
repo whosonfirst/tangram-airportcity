@@ -63,11 +63,19 @@ mapzen.whosonfirst.airportcity = (function(){
 
 			'onkeyboard': function(event){
 
+				console.log(event);
 				var key = event.keyCode || event.which;
 				var keychar = String.fromCharCode(key);
 
 				if ((event.shiftKey) && (keychar == "S")){
-					self.screenshot();
+
+					if (event.metaKey){
+						self.screenshot_as_file();
+					}
+
+					else {
+						self.screenshot();
+					}
 				}
 			},
 
@@ -258,12 +266,23 @@ mapzen.whosonfirst.airportcity = (function(){
 				return layer.scene;
 			},
 
+			'screenshot_as_file': function(){
+
+				var fname = 'tangram-airport-' + (+new Date()) + '.png';
+
+				var callback = function(sh){					
+					saveAs(sh.blob, fname);
+				};
+
+				self.screenshot(callback);
+			},
+
 			'screenshot': function(on_screenshot){
 
 				if (! on_screenshot){
 
-					on_screenshot = function(result) {						
-						window.open(result.url);
+					on_screenshot = function(sh) {
+						window.open(sh.url);
 					};
 				}
 
@@ -279,9 +298,9 @@ mapzen.whosonfirst.airportcity = (function(){
 				scene.config.scene.background.color = c;
 				scene.updateConfig();
 
-				scene.screenshot().then(function(rsp){
+				scene.screenshot().then(function(sh){
 
-					on_screenshot(rsp);
+					on_screenshot(sh);
 
 					// Remove Tangram background so that the code
 					// to set the background colour on the #map div
