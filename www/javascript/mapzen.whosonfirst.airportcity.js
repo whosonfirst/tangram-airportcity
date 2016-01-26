@@ -252,8 +252,12 @@ mapzen.whosonfirst.airportcity = (function(){
 
 				var scene = self.scene();
 
-				// scene.background.color = 'red';
-				// scene.updateConfig();
+				/*
+				var m = document.getElementById("map");
+				var c = m.style.backgroundColor;
+				scene.background.color = c;
+				scene.updateConfig();
+				*/
 
 				scene.screenshot().then(on_screenshot);
 			}
