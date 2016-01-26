@@ -57,8 +57,20 @@ mapzen.whosonfirst.airportcity = (function(){
 
 				var c = document.getElementById("feedback-controls");
 				c.onclick = self.hide_feedback;
+
+				document.body.onkeydown = self.onkeyboard;
 			},
-			
+
+			'onkeyboard': function(event){
+
+				var key = event.keyCode || event.which;
+				var keychar = String.fromCharCode(key);
+
+				if ((event.shiftKey) && (keychar == "S")){
+					self.screenshot();
+				}
+			},
+
 			'onzoom': function(){
 				
 				function interpolate(begin, end, step, max){
