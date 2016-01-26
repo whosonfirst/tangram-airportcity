@@ -251,6 +251,10 @@ mapzen.whosonfirst.airportcity = (function(){
 				}
 
 				var scene = self.scene();
+
+				// scene.background.color = 'red';
+				// scene.updateConfig();
+
 				scene.screenshot().then(on_screenshot);
 			}
 		};
